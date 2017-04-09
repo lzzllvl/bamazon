@@ -1,0 +1,27 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "Web Store Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lzzllvl/bamazon.git"
+  },
+  "keywords": [
+    "bamazon",
+    "mysql",
+    "nodejs"
+  ],
+  "author": "Gregory Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lzzllvl/bamazon/issues"
+  },
+  "homepage": "https://github.com/lzzllvl/bamazon#readme",
+  "dependencies": {
+    "mysql": "^2.13.0"
+  }
+}
