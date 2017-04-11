@@ -14,6 +14,7 @@ const DBConnection = function() {
     this.init = function(type) {
       self.connection.connect(err => {
         if(err) throw err;
+        self.type = type;
         console.log(`Connected as ${type} on Thread: ${connection.threadId}`);
       });
     };
@@ -21,5 +22,13 @@ const DBConnection = function() {
     return new DBConnection;
   }
 }
+
+DBConnection.prototype.displayProducts = function() {
+  let conn = this.connection;
+  conn.query("SELECT * FROM products", function(err, res) {
+    if(err) throw err;
+    console.log(res);
+  });
+};
 
 module.exports = DBConnection;

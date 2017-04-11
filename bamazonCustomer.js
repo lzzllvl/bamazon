@@ -1,13 +1,6 @@
 const DBConnection = require('./dbConnection.js');
 const prompt = require('prompt');
 
-DBConnection.prototype.displayProducts = function() {
-  let conn = this.connection;
-  conn.query("SELECT * FROM products", function(err, res) {
-    if(err) throw err;
-    console.log(res);
-  });
-};
 
 DBConnection.prototype.purchaseUpdate = function(quant, prodName) {
   this.connection.query("UPDATE products SET ? WHERE ?", [{stock_quantity: quant},
@@ -40,8 +33,10 @@ const customer = {
       var self = this;
       customerConnection.connection.query("SELECT * FROM products WHERE product_name = ?", self.item, function(err, res) {
         let left = res[0].stock_quantity - self.quantity;
+        let cost = res[0].price;
         if(left >= 0){
           customerConnection.purchaseUpdate(left, self.item);
+          console.log(`Purchase Complete: ${self.quantity} of ${self.item} for ${self.quantity * cost}`);
         } else {
           console.log("We apologize, we have an insufficient stock quantity for your request...");
         }
