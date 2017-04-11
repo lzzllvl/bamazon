@@ -17,7 +17,7 @@ CREATE TABLE products(
   `price` DECIMAL(10,4) NOT NULL,
   `stock_quantity` INTEGER(5) NOT NULL,
   `product_sales` DECIMAL(10,4) NOT NULL,
-  PRIMARY KEY(`item_id`)
+  PRIMARY KEY(`item_id`),
   FOREIGN KEY (`department_name`)
   REFERENCES departments(`department_name`)
 );

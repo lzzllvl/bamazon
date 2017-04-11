@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 
-const DBConnection = () => {
+const DBConnection = function() {
   if(this instanceof DBConnection) {
     let self = this;
     this.connection = mysql.createConnection({
@@ -8,13 +8,13 @@ const DBConnection = () => {
     	port: 3306,
     	user: "root",
     	password: "mysqlworkbench",
-    	database: "playlist"
+    	database: "Bamazon"
     });
 
-    this.init = function() {
+    this.init = function(type) {
       self.connection.connect(err => {
         if(err) throw err;
-        console.log("Connected on Thread: " + connection.threadId);
+        console.log(`Connected as ${type} on Thread: ${connection.threadId}`);
       });
     };
   } else {
