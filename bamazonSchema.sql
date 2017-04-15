@@ -13,11 +13,13 @@ CREATE TABLE departments(
 CREATE TABLE products(
   `item_id` INTEGER(11) UNSIGNED auto_increment NOT NULL,
   `product_name` VARCHAR(255) NOT NULL,
-  `department_name` VARCHAR(32),
+  `department_id` INTEGER(11) UNSIGNED,
   `price` DECIMAL(10,4) NOT NULL,
   `stock_quantity` INTEGER(5) NOT NULL,
   `product_sales` DECIMAL(10,4) NOT NULL,
-  PRIMARY KEY(`item_id`),
-  FOREIGN KEY (`department_name`)
-  REFERENCES departments(`department_name`)
+  PRIMARY KEY(`item_id`)
 );
+
+ALTER TABLE products
+ADD CONSTRAINT FK_dep_id
+FOREIGN KEY (`department_id`) REFERENCES departments(`department_id`);
