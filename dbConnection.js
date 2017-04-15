@@ -7,15 +7,12 @@ const DBConnection = function(type) {
     switch(type) {
       case "customer":
         this.connectionMethods = require("./bamazonCustomer.js");
-        console.log(this.connectionMethods);
         break;
       case "supervisor":
         this.connectionMethods = require("./bamazonSupervisor.js");
-        console.log(this.connectionMethods);
         break;
       case "manager":
         this.connectionMethods = require("./bamazonManager.js");
-        console.log(this.connectionMethods);
         break;
       default:
         console.log("Connection Type Must Be Specified");
@@ -34,7 +31,6 @@ const DBConnection = function(type) {
     this.init = function() {
       self.connection.connect(err => {
         if(err) throw err;
-        console.log(`Connected as ${self.type} on Thread: ${self.connection.threadId}`);
       });
     };
 
@@ -42,14 +38,5 @@ const DBConnection = function(type) {
     return new DBConnection;
   }
 }
-
-// DBConnection.prototype.displayProducts = function() {
-//   let conn = this.connection;
-//   conn.query("SELECT * FROM products", function(err, res) {
-//     if(err) throw err;
-//     console.log(res);
-//   });
-// };
-
 
 module.exports = DBConnection;
